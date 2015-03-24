@@ -1,0 +1,7 @@
+#!/bin/sh
+
+iptables --flush
+iptables --delete-chain
+iptables --policy INPUT ACCEPT
+iptables --policy OUTPUT ACCEPT
+iptables --policy FORWARD ACCEPT
