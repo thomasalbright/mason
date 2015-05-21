@@ -39,11 +39,11 @@ iptables -N SSH
 iptables -N SSH_ABL
 iptables --append SSH --match recent --name SSH_ABL --update --seconds 3600 --jump REJECT
 iptables --append SSH --match recent --name SSH --rcheck --seconds 60 --hitcount 5 --jump SSH_ABL
-iptables --append SSH_ABL --match recent --name SSH_ABL --set --jump LOG --log-level warn --log-prefix "ABL: +SSH: "
+iptables --append SSH_ABL --match recent --name SSH_ABL --set --jump LOG --log-level 4 --log-prefix "ABL: +SSH: "
 iptables --append SSH_ABL --jump REJECT
-iptables --append SSH --match recent --name SSH --rcheck --seconds 2 --jump LOG --log-level warn --log-prefix "RATE: "
+iptables --append SSH --match recent --name SSH --rcheck --seconds 2 --jump LOG --log-level 4 --log-prefix "RATE: "
 iptables --append SSH --match recent --name SSH --update --seconds 2 --jump REJECT
-iptables --append SSH --match recent --name SSH_ABL --remove --jump LOG --log-level warn --log-prefix "ABL: -SSH: "
+iptables --append SSH --match recent --name SSH_ABL --remove --jump LOG --log-level 4 --log-prefix "ABL: -SSH: "
 iptables --append SSH --match recent --name SSH --set --jump ACCEPT
 iptables --append INPUT --match state --state NEW -p tcp --match tcp --dport 2222 --jump SSH
 
