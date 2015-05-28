@@ -1,7 +1,7 @@
 Mason
 =====
 
-Build iptables rules from common configurations
+Generate iptables rules from common configurations
 
 Currently, mason only implements 1 configuration.  However, the plan is
 to add others as needed.
@@ -13,8 +13,25 @@ once every 2 seconds, and temporarily blacklisting an IP after 5 failed
 attempts.
 
 
+Usage
+-----
+
+    ./mason > iptables-set   # (Where 'iptables-set' is any filename you choose)
+    ./iptables-set
+
+
 Requirements
 ------------
+
+
+For generating iptables rules
+-----------------------------
+
+* ruby
+
+
+For executing generated rules
+-----------------------------
 
 * Bourne shell (sh)
 * iptables

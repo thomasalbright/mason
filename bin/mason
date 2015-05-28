@@ -1,3 +1,7 @@
+#!/usr/bin/env ruby
+
+def generate
+  to_write = <<-eos
 #!/bin/sh
 IPTABLES=/sbin/iptables
 
@@ -62,3 +66,9 @@ iptables --append INPUT ! --in-interface lo --jump LOG --log-prefix "DROP " --lo
 
 # Allow all outgoing traffic
 iptables --append OUTPUT -m state --state NEW,ESTABLISHED,RELATED -j ACCEPT
+eos
+
+  puts to_write
+end
+
+generate
