@@ -19,6 +19,11 @@ Usage
     ./mason > iptables-set   # (Where 'iptables-set' is any filename you choose)
     ./iptables-set
 
+After executing the generated ruleset, to persist the rules through reboots on
+RHEL or CentOS, run
+
+    service iptables save
+
 
 Requirements
 ------------
