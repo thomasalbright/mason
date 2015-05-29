@@ -78,7 +78,5 @@ iptables --append INPUT ! --in-interface lo --jump LOG --log-prefix "DROP " --lo
 iptables --append OUTPUT -m state --state NEW,ESTABLISHED,RELATED -j ACCEPT
 eos
 
-  puts to_write
+  return to_write
 end
-
-generate

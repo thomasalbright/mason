@@ -16,11 +16,25 @@ attempts.
 Usage
 -----
 
-    ./mason > iptables-set   # (Where 'iptables-set' is any filename you choose)
+1. Create a ruby script with your desired firewall rules, defined using mason:
+
+    require_relative('mason')
+
+    puts generate
+
+
+2. Run your script, saving the output to a new bash script
+
+    ruby generate.rb > iptables-set   # (Where 'iptables-set' is any filename you choose)
+
+
+3. Run the generated bash script
+
     ./iptables-set
 
-After executing the generated ruleset, to persist the rules through reboots on
-RHEL or CentOS, run
+
+4. After executing the generated ruleset, to persist the rules through reboots
+   on RHEL or CentOS, run
 
     service iptables save
 
