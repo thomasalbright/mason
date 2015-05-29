@@ -20,7 +20,7 @@ Usage
 
     require_relative('mason')
 
-    puts generate
+    puts generate allow_ssh(port: 2222)
 
 
 2. Run your script, saving the output to a new bash script

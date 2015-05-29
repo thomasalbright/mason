@@ -22,7 +22,7 @@ iptables --append INPUT --match state --state NEW -p tcp --match tcp --dport #{p
 eos
 end
 
-def generate
+def generate(*args)
   to_write = <<-eos
 #!/bin/sh
 IPTABLES=/sbin/iptables
@@ -58,7 +58,9 @@ iptables -A INPUT -p tcp -m tcp --tcp-flags FIN,ACK FIN -j DROP
 iptables -A INPUT -p tcp -m tcp --tcp-flags ACK,URG URG -j DROP
 eos
 
-  to_write << allow_ssh(port: 2222)
+  args.each do |rule|
+    to_write << rule
+  end
 
   to_write << <<-eos
 # Allow HTTP and HTTPS
